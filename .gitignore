@@ -45,3 +45,6 @@ reports/
 .vscode/
 .idea/
 *.iml
+
+# Ignore user data file
+userData.py

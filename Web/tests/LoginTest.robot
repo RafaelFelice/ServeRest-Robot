@@ -13,31 +13,30 @@ CT01: Login successfully
 CT02: Login unsuccessfully with invalid email
     [Tags]    login
     Login    ${invalid_email}    ${default_password}
-    Verify error: ${MSG_INVALID_EMAIL}
+    Verify error: ${msg_invalid_email_or_password}
 
 CT03: Login unsuccessfully with invalid password
     [Tags]    login
     Login    ${default_email}    ${invalid_password}
-    Verify error: ${MSG_INVALID_PASSWORD}
+    Verify error: ${msg_invalid_email_or_password}
 
 CT02: Login unsuccessfully with invalid email and invalid password
     [Tags]    login
     Login    ${invalid_email}    ${invalid_password}
-    Verify error: ${MSG_INVALID_EMAIL}
-    Verify error: ${MSG_INVALID_PASSWORD}
+    Verify error: ${msg_invalid_email_or_password}
 
 CT02: Login unsuccessfully with blank email
     [Tags]    login
     Login    ${blank_email}    ${default_password}
-    Verify error: ${MSG_BLANK_EMAIL}
+    Verify error: ${msg_blank_email}
 
 CT02: Login unsuccessfully with blank password
     [Tags]    login
     Login    ${default_email}    ${blank_password}
-    Verify error: ${MSG_BLANK_PASSWORD}
+    Verify error: ${msg_blank_password}
 
 CT02: Login unsuccessfully with blank email and blank password
     [Tags]    login
     Login    ${blank_email}    ${blank_password}
-    Verify error: ${MSG_BLANK_EMAIL}
-    Verify error: ${MSG_BLANK_PASSWORD}
+    Verify error: ${msg_blank_email}
+    Verify error: ${msg_blank_password}

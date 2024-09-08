@@ -8,7 +8,3 @@ Login
     Input Text            ${LOGIN_INPUT_EMAIL}    ${email}
     Input Password        ${LOGIN_INPUT_PASSWORD}    ${password}
     Click Element         ${LOGIN_BTN_SUBMIT}
-
-Verify error: ${text}
-    Wait Until Page Contains    ${text}
-    Log                         ${text}

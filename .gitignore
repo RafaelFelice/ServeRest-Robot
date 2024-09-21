@@ -1,0 +1,50 @@
+# Ignore environment files
+.env
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore Python-related files
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+*.pyo
+*.pyd
+*.pdb
+*.pyc
+
+# Ignore virtual environments
+venv/
+.env/
+.venv/
+env/
+ENV/
+
+# Ignore Robot Framework output files
+output.xml
+log.html
+report.html
+*.png  # Screenshots (if used)
+debug.log  # Debug logs
+
+# Ignore generated reports
+allure-results/
+allure-report/
+reports/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+
+# Ignore IDE/editor specific files
+.vscode/
+.idea/
+*.iml
+
+# Ignore user data file
+userData.py

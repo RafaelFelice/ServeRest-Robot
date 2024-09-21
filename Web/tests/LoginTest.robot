@@ -20,22 +20,22 @@ CT03: Login unsuccessfully with invalid password
     Login    ${default_email}    ${invalid_password}
     Verify error: ${msg_invalid_email_or_password}
 
-CT02: Login unsuccessfully with invalid email and invalid password
+CT04: Login unsuccessfully with invalid email and invalid password
     [Tags]    login
     Login    ${invalid_email}    ${invalid_password}
     Verify error: ${msg_invalid_email_or_password}
 
-CT02: Login unsuccessfully with blank email
+CT05: Login unsuccessfully with blank email
     [Tags]    login
     Login    ${blank_email}    ${default_password}
     Verify error: ${msg_blank_email}
 
-CT02: Login unsuccessfully with blank password
+CT06: Login unsuccessfully with blank password
     [Tags]    login
     Login    ${default_email}    ${blank_password}
     Verify error: ${msg_blank_password}
 
-CT02: Login unsuccessfully with blank email and blank password
+CT07: Login unsuccessfully with blank email and blank password
     [Tags]    login
     Login    ${blank_email}    ${blank_password}
     Verify error: ${msg_blank_email}

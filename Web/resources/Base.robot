@@ -7,6 +7,10 @@ Resource         pages/login/LoginPage.robot
 Resource         pages/home/HomeElements.robot
 Resource         pages/registerUser/RegisterUserElements.robot
 Resource         pages/registerUser/RegisterUserPage.robot
+Resource         pages/registerProducts/RegisterProductElements.robot
+Resource         pages/registerProducts/RegisterProductPage.robot
+Resource         pages/listProducts/ListProductsElements.robot
+Resource         pages/listProducts/ListProductsPage.robot
 Resource         Commons.robot
 Variables        userData.py
 

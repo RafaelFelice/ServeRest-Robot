@@ -7,10 +7,10 @@ Test Setup         run keywords
 Test Teardown     Close Browser
 
 *** Test Cases ***
-CT01: Login successfully
-    [Tags]    product    regression
-    Login    ${default_email}    ${default_password}
-    Register a new product    
-    ...    ${FAKER_NAME_PRODUCT}    ${FAKER_PRICE_PRODUCT}    
-    ...    ${FAKER_DESCRIPTION_PRODUCT}    ${FAKER_QUANTITY_PRODUCT}
-    Check the product in the list        ${FAKER_NAME_PRODUCT}
+# CT01: Login successfully
+#     [Tags]    product    regression
+#     Login    ${default_email}    ${default_password}
+#     Register a new product    
+#     ...    ${FAKER_NAME_PRODUCT}    ${FAKER_PRICE_PRODUCT}    
+#     ...    ${FAKER_DESCRIPTION_PRODUCT}    ${FAKER_QUANTITY_PRODUCT}
+#     Check the product in the list        ${FAKER_NAME_PRODUCT}

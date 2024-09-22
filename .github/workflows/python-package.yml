@@ -30,7 +30,7 @@ jobs:
 
     - name: Run tests with pytest and generate Allure report
       run: |
-        pytest Web/tests --alluredir=allure-results  # Gera o relatório Allure
+        pytest ServeRest-Robot/Web/tests --alluredir=allure-results  # Gera o relatório Allure
 
     - name: Download and install Allure
       run: |

@@ -28,9 +28,19 @@ jobs:
         python -m pip install flake8 pytest allure-pytest
         if (Test-Path 'requirements.txt') { pip install -r requirements.txt }
 
+    - name: Print current directory
+      run: |
+        echo "Current Directory: "
+        pwd  # Exibe o diretório atual para verificar onde o repositório foi clonado
+
+    - name: List repository files
+      run: |
+        echo "Files in the current directory:"
+        ls  # Lista os arquivos do repositório para verificar se a pasta 'Web/tests' está presente
+
     - name: Run tests with pytest and generate Allure report
       run: |
-        pytest ServeRest-Robot/Web/tests --alluredir=allure-results  # Gera o relatório Allure
+        pytest Web/tests --alluredir=allure-results  # Use caminho relativo ao diretório do repositório
 
     - name: Download and install Allure
       run: |

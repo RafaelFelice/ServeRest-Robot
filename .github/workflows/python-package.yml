@@ -25,32 +25,22 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install flake8 pytest allure-pytest
-        if (Test-Path 'requirements.txt') { pip install -r requirements.txt }
+        python -m pip install robotframework robotframework-pabot robotframework-seleniumlibrary allure-robotframework
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: Print current directory
+    - name: Run tests with Robot Framework and generate Allure report
       run: |
-        echo "Current Directory: "
-        pwd  # Exibe o diretório atual para verificar onde o repositório foi clonado
+        robot --outputdir allure-results Web/tests  # Executa os testes e gera os resultados para o Allure
 
-    - name: List repository files
+    - name: Install Allure CLI
       run: |
-        echo "Files in the current directory:"
-        ls  # Lista os arquivos do repositório para verificar se a pasta 'Web/tests' está presente
-
-    - name: Run tests with pytest and generate Allure report
-      run: |
-        pytest Web/tests --alluredir=allure-results  # Use caminho relativo ao diretório do repositório
-
-    - name: Download and install Allure
-      run: |
-        curl -o allure.zip -L https://github.com/allure-framework/allure2/releases/download/2.20.1/allure-2.20.1.zip
-        tar -xzf allure.zip -C $GITHUB_WORKSPACE/allure  # Extrai o Allure no diretório do workspace
-        echo "Allure extracted to $GITHUB_WORKSPACE/allure"
+        sudo apt-add-repository ppa:qameta/allure
+        sudo apt-get update
+        sudo apt-get install allure
 
     - name: Generate Allure report
       run: |
-        $GITHUB_WORKSPACE/allure/bin/allure generate allure-results --clean -o allure-report  # Gera o relatório
+        allure generate allure-results --clean -o allure-report  # Gera o HTML do relatório
 
     - name: Publish Allure report as artifact
       uses: actions/upload-artifact@v3

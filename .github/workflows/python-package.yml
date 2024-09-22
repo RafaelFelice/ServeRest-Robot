@@ -10,26 +10,28 @@ jobs:
   build:
 
     runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.10", "3.11"]
 
     steps:
     - uses: actions/checkout@v4
-
-    - name: Set up Python 3.11  # Define a versão mais recente de Python
+    - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
-        python-version: 3.11  # Usa apenas a versão mais recente de Python
+        python-version: ${{ matrix.python-version }}
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install robotframework robotframework-pabot robotframework-seleniumlibrary allure-robotframework
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        python -m pip install flake8 pytest allure-pytest
+        if (Test-Path 'requirements.txt') { pip install -r requirements.txt }
 
     - name: Run tests with Robot Framework and generate Allure report
       run: |
-        robot --outputdir allure-results Web/tests
+        robot --outputdir allure-results Web/tests  # Executa os testes e gera os resultados para o Allure
 
-    # Instalação do Allure CLI no Windows
     - name: Download Allure CLI for Windows
       run: |
         curl -o allure.zip -L https://github.com/allure-framework/allure2/releases/download/2.20.1/allure-2.20.1.zip

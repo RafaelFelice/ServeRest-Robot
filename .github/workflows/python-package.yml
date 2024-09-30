@@ -30,17 +30,17 @@ jobs:
 
     - name: Run tests with Robot Framework and generate Allure report
       run: |
-        robot --outputdir allure-results Web/tests  # Executa os testes e gera os resultados para o Allure
+        robot --outputdir allure-results Web/tests
 
     - name: Download Allure CLI for Windows
       run: |
         curl -o allure.zip -L https://github.com/allure-framework/allure2/releases/download/2.20.1/allure-2.20.1.zip
         tar -xf allure.zip
-        setx PATH "%PATH%;D:\\a\\ServeRest-Robot\\ServeRest-Robot\\allure-2.20.1\\bin"  # Adiciona ao PATH do Windows
+        setx PATH "%PATH%;D:\\a\\ServeRest-Robot\\ServeRest-Robot\\allure-2.20.1\\bin"
 
     - name: Generate Allure report
       run: |
-        allure generate allure-results --clean -o allure-report  # Gera o HTML do relatório
+        allure generate allure-results --clean -o allure-report
 
     - name: Publish Allure report as artifact
       uses: actions/upload-artifact@v3

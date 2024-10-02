@@ -25,23 +25,31 @@ jobs:
         python -m pip install flake8 pytest allure-pytest
         if (Test-Path 'requirements.txt') { pip install -r requirements.txt }
 
-    - name: Run smoke tests
+    - name: Run Web smoke tests
       run: |
-        robot --include smoke --outputdir allure-results/smoke Web/tests  # Executa testes com a tag 'smoke'
+        robot --i smoke --outputdir allure-results/smoke Web/tests
     
-    - name: Run regression tests
+    - name: Run Web regression tests
       run: |
-        robot --include regression --outputdir allure-results/regression Web/tests  # Executa testes com a tag 'regression'
+        robot --i regression --outputdir allure-results/regression Web/tests
+    
+    - name: Run API smoke tests
+      run: |
+        robot --i smoke --outputdir allure-results/api/smoke api/tests
+    
+    - name: Run API regression tests
+      run: |
+        robot --i regression --outputdir allure-results/api/regression api/tests
 
     - name: Download Allure CLI for Windows
       run: |
         curl -o allure.zip -L https://github.com/allure-framework/allure2/releases/download/2.20.1/allure-2.20.1.zip
         tar -xf allure.zip
-        setx PATH "%PATH%;D:\\a\\ServeRest-Robot\\ServeRest-Robot\\allure-2.20.1\\bin"  # Adiciona ao PATH do Windows
+        setx PATH "%PATH%;D:\\a\\ServeRest-Robot\\ServeRest-Robot\\allure-2.20.1\\bin"
 
     - name: Generate Allure report
       run: |
-        allure generate allure-results/smoke allure-results/regression --clean -o allure-report  # Gera o HTML do relatório combinando resultados de smoke e regression
+        allure generate allure-results/smoke allure-results/regression --clean -o allure-report
 
     - name: Publish Allure report as artifact
       uses: actions/upload-artifact@v3

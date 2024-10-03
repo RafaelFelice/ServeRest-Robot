@@ -29,13 +29,13 @@ jobs:
       run: |
         robot --i smoke --outputdir allure-results/smoke Web/tests
     
-    - name: Run Web regression tests
-      run: |
-        robot --i regression --outputdir allure-results/regression Web/tests
-    
     - name: Run API smoke tests
       run: |
         robot --i smoke --outputdir allure-results/api/smoke api/tests
+    
+    - name: Run Web regression tests
+      run: |
+        robot --i regression --outputdir allure-results/regression Web/tests
     
     - name: Run API regression tests
       run: |

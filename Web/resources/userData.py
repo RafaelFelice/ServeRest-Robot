@@ -1,5 +1,5 @@
 #User datas
-default_email = "fulano@qa.com"
+default_email = "phao@qa.com"
 default_password = "teste"
 invalid_email = "invalid@qa.com"
 invalid_password = "invalid"

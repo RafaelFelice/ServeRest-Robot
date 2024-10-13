@@ -25,12 +25,12 @@ jobs:
         python -m pip install flake8 pytest allure-pytest
         if (Test-Path 'requirements.txt') { pip install -r requirements.txt }
 
-    - name: Run tests with Robot Framework
+    - name: Run tests
       run: |
-        robot --outputdir allure-results/smoke API/tests --i smoke
-        robot --outputdir allure-results/smoke Web/tests --i smoke
-        robot --outputdir allure-results/regression API/tests --i regression
-        robot --outputdir allure-results/regression Web/tests --i regression        
+        robot --i smoke --outputdir allure-results/api/smoke api/tests
+        robot --i smoke --outputdir allure-results/smoke Web/tests
+        robot --i regression --outputdir allure-results/api/regression api/tests
+        robot --i regression --outputdir allure-results/regression Web/tests
 
     - name: Download Allure CLI for Windows
       run: |

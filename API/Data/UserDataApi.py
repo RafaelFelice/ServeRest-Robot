@@ -1,4 +1,5 @@
 #Body
+default_name = "Phao"
 default_email = "phao@qa.com"
 default_password = "teste"
 incorrect_email = "incorrect@qa.com"
@@ -7,3 +8,7 @@ invalid_email = "@qa.com"
 blank_name = ""
 blank_email = ""
 blank_password = ""
+incorrect_user_id = "incorrect"
+other_name = "Phao92"
+other_email = "phao92@qa.com"
+other_password = "teste92"

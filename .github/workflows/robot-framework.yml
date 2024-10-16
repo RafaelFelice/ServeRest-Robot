@@ -32,23 +32,26 @@ jobs:
         robot --i regression --outputdir allure-results/api/regression api/tests
         robot --i regression --outputdir allure-results/regression Web/tests
 
-    - name: Download Allure CLI for Windows
-      run: |
-        curl -o allure.zip -L https://github.com/allure-framework/allure2/releases/download/2.20.1/allure-2.20.1.zip
-        tar -xf allure.zip
-        setx PATH "%PATH%;D:\\a\\ServeRest-Robot\\ServeRest-Robot\\allure-2.20.1\\bin"
-
-    - name: Generate Allure report
-      run: |
-        allure generate allure-results/smoke allure-results/regression --clean -o allure-report
-
-    - name: Publish Allure report as artifact
-      uses: actions/upload-artifact@v3
+    - name: Load test report history
+      uses: actions/checkout@v3
+      if: always()
+      continue-on-error: true
       with:
-        name: allure-report
-        path: allure-report/
+          ref: gh-pages
+          path: gh-pages
 
-    - name: Lint with flake8
-      run: |
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Build test report
+      uses: simple-elf/allure-report-action@v1.7
+      if: always()
+      with:
+          gh_pages: gh-pages
+          allure_history: allure-history
+          allure_results: build/allure-results
+
+    - name: Publish test report
+      uses: peaceiris/actions-gh-pages@v3
+      if: always()
+      with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history

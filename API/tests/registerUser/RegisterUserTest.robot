@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation      This suite has goal to test the register user feature.
+Documentation      This suite has goal to test the register user feature from API.
 Resource       ../../resources/utils/Base.robot   
 
 *** Test Cases ***

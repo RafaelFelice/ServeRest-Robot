@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation      This suite has goal to test the register user feature.
+Documentation      This suite has goal to test the register user feature from website
 Resource           ../resources/Base.robot
 Test Setup         run keywords 
 ...                Access page serverest

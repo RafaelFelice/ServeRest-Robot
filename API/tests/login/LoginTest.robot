@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation      This suite has goal to test the login feature.
+Documentation      This suite has goal to test the login feature from API.
 Resource       ../../resources/utils/Base.robot   
 
 *** Test Cases ***

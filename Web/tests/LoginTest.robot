@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation      This suite has goal to test the login feature.
+Documentation      This suite has goal to test the login feature from website.
 Resource           ../resources/Base.robot
 Test Setup        Access page serverest
 Test Teardown     Close Browser

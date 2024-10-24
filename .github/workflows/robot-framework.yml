@@ -31,21 +31,3 @@ jobs:
         robot --i smoke --outputdir allure-results/smoke Web/tests
         robot --i regression --outputdir allure-results/api/regression api/tests
         robot --i regression --outputdir allure-results/regression Web/tests
-
-    - name: Build Allure report
-      run: |
-        allure generate allure-results --clean -o allure-report
-
-    - name: Publish Allure report as artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: allure-report
-        path: allure-report/
-
-    - name: Deploy Allure report to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      if: always()
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: gh-pages
-        publish_dir: allure-report
